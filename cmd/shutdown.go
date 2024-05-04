@@ -15,7 +15,7 @@ import (
 var shutdownCmd = &cobra.Command{
 	Use:   "shutdown",
 	Short: "Shuts down the daemon",
-	Long:  `This command shuts down the daemon`,
+	Long:  `Daemon has to be unlocked. This command shuts down the daemon.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		client, conn := lib.NewClient(socketPath)
 		defer func(conn *grpc.ClientConn) {

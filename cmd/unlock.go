@@ -1,4 +1,3 @@
-/*Package cmd admaksdmalsdmalkd*/
 package cmd
 
 import (
@@ -16,8 +15,10 @@ import (
 // unlockCmd represents the unlock command
 var unlockCmd = &cobra.Command{
 	Use:   "unlock",
-	Short: "unlocks the daemon",
-	Long:  ``,
+	Short: "Unlocks the daemon",
+	Long: `This command has to be used before most commands can be used. The daemon is locked on startup with the encryption password. 
+The encryption password was set during wallet creation.  
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		client, conn := lib.NewClient(socketPath)
 		defer func(conn *grpc.ClientConn) {

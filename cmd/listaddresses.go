@@ -14,7 +14,7 @@ import (
 var listaddressesCmd = &cobra.Command{
 	Use:   "listaddresses",
 	Short: "Lists all addresses belonging to the user",
-	Long: `Lists all addresses belonging to the user. 
+	Long: `Daemon has to be unlocked. Lists all addresses belonging to the user. 
 If a user has not created any labels this will always 
 return the standard silent payment address. 
 The daemon returns the addresses in the order the labels were created. 

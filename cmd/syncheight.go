@@ -14,7 +14,7 @@ import (
 var syncheightCmd = &cobra.Command{
 	Use:   "syncheight",
 	Short: "Get the last sync height",
-	Long:  `Shows to which height the daemon is synced`,
+	Long:  `Daemon has to be unlocked. Shows to which height the daemon is synced`,
 	Run: func(cmd *cobra.Command, args []string) {
 		client, conn := lib.NewClient(socketPath)
 

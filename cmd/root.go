@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -34,6 +35,6 @@ func init() {
 	// required flags
 	err := cobra.MarkFlagRequired(RootCmd.PersistentFlags(), "socket")
 	if err != nil {
-		return
+		log.Fatalln(err)
 	}
 }

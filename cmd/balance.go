@@ -14,17 +14,17 @@ import (
 var (
 	listUTXOs bool
 
-	showUnconfirmed      bool = false
-	showUnspent          bool = false
-	showSpent            bool = false
-	showSpentUnConfirmed bool = false
+	showUnconfirmed      = false
+	showUnspent          = false
+	showSpent            = false
+	showSpentUnConfirmed = false
 
 	states []pb.UTXOState
 
 	balanceCmd = &cobra.Command{
 		Use:   "balance",
 		Short: "shows the balance of the wallet",
-		Long:  ``,
+		Long:  `Daemon needs to be unlocked. Shows the balance of the wallet.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			client, conn := lib.NewClient(socketPath)
 			defer func(conn *grpc.ClientConn) {
@@ -52,7 +52,7 @@ var (
 
 			utxos, err := client.ListUTXOs(context.Background(), &pb.Empty{})
 			if err != nil {
-				log.Fatalf("ListUTXOs failed: %v\n", err)
+				log.Fatalf("Error: Getting UTXOs failed: %v\n", err)
 			}
 
 			var balance uint64
@@ -94,14 +94,3 @@ func init() {
 	balanceCmd.PersistentFlags().BoolVar(&showSpentUnConfirmed, "spentunconf", false, "add spent utxos whose spending transaction is not confirmed to the filter")
 
 }
-
-// usageUTXOStatesFlag
-// Deprecated:: do not use
-var usageUTXOStatesFlag = `	
-The following states can be set. The state has to be given as an integer not a
-	UTXOState_UNKNOWN           = 0
-	UTXOState_UNCONFIRMED       = 1
-	UTXOState_UNSPENT           = 2
-	UTXOState_SPENT             = 3
-	UTXOState_SPENT_UNCONFIRMED = 4
-`
