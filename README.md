@@ -1,5 +1,7 @@
 # BlindBit-cli
 
+NOTE: was integrated into [blindbitd](https://github.com/setavenger/blindbitd/tree/master/cli)
+
 This cli application controls the [blindbit daemon (blindbitd)](https://github.com/setavenger/BlindBitd). Send and
 receive are the first features to come.
 The daemon already has some more features which are not exposed through this cli. Those can be accessed using gRPC tools
